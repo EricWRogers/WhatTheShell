@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 370203091}
   m_Layer: 0
   m_Name: The Bricks_0 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 1055030011}
   m_Layer: 8
   m_Name: The Bricks_1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,6 +396,7 @@ MonoBehaviour:
     m_Bits: 256
   speed: -1.5
   isGrounded: 0
+  anim: {fileID: 0}
 --- !u!50 &1055030012
 Rigidbody2D:
   serializedVersion: 4
@@ -582,11 +583,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4657538490305744, guid: 5e87fd2e92df24e4487c7a1e7e579e25, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.8227126
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 4657538490305744, guid: 5e87fd2e92df24e4487c7a1e7e579e25, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.09241751
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 4657538490305744, guid: 5e87fd2e92df24e4487c7a1e7e579e25, type: 2}
       propertyPath: m_LocalPosition.z
@@ -610,6 +611,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4657538490305744, guid: 5e87fd2e92df24e4487c7a1e7e579e25, type: 2}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942489285240820, guid: 5e87fd2e92df24e4487c7a1e7e579e25, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114843163693410014, guid: 5e87fd2e92df24e4487c7a1e7e579e25,
+        type: 2}
+      propertyPath: Health
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
