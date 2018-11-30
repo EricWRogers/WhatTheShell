@@ -11,6 +11,17 @@ public class PlayerControls : MonoBehaviour
     public bool isJumping;
     public int Health = 3;
 
+
+    public bool IsGrounded;
+    private float speedForce = 0f;
+    private float minAirTime = .5f;
+    private float maxAirTime = 2f;
+    public float maxJumpHeight;
+    public float minJumpHeight;
+    public Transform GroundCheckOrigin;
+    public Transform detectEnemyOrigin;
+
+
     // Use this for initialization
     void Start()
     {
@@ -24,18 +35,68 @@ public class PlayerControls : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         rb2d.velocity = new Vector2(speedH * moveHorizontal, rb2d.velocity.y);
 
-        Jump();
+        // Jump();
         //Debug.Log(isJumping);
+        RaycastHit2D hit = Physics2D.Raycast(GroundCheckOrigin.position, transform.up * -1, .05f);
+        if (hit.collider != null)
+        {
+            if (hit.collider.tag == "Ground")
+            {
+                // Debug.Log("Hit!");
+                IsGrounded = true;
+               // a2d.SetBool("IsGrounded", true);
+            }
+
+            if(hit.collider.tag == "Enemy")
+            {
+                Destroy(hit.transform.gameObject);
+            }
+
+        }
+
+        if (Input.GetKey(KeyCode.Space) && IsGrounded == true)
+        {
+            if (speedForce <= maxAirTime)
+            {
+                speedForce += .2f;
+            }
+
+            else
+            {
+                Jump();
+            }
+
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) && IsGrounded == true)
+        {
+            Jump();
+        }
+
+    
     }
 
     //Makes the Player Jump if it is on ground
     void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        if (speedForce < minAirTime)
         {
-            isJumping = true;
-            rb2d.AddForce(new Vector2(rb2d.velocity.x, -JumpForce));
+            rb2d.AddForce(new Vector2(0, minJumpHeight * minAirTime), ForceMode2D.Impulse);
         }
+
+        else if (speedForce > maxAirTime)
+        {
+            rb2d.AddForce(new Vector2(0, maxJumpHeight * maxAirTime), ForceMode2D.Impulse);
+        }
+
+        else
+        {
+            rb2d.AddForce(new Vector2(0, minJumpHeight * minAirTime), ForceMode2D.Impulse);
+        }
+        //jump animation bool stuff
+       // a2d.SetBool("IsGrounded", false);
+        IsGrounded = false;
+        speedForce = 0f;
     }
 
     //Checks collisions
