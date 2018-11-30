@@ -20,12 +20,14 @@ public class PlayerControls : MonoBehaviour
     public float minJumpHeight;
     public Transform GroundCheckOrigin;
     public Transform detectEnemyOrigin;
+    
 
 
     // Use this for initialization
     void Start()
     {
         rb2d = this.GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -114,6 +116,9 @@ public class PlayerControls : MonoBehaviour
         { 
             Health--;
             //Debug.Log(Health);
+            Vector2 newVeloc = rb2d.velocity;
+            newVeloc.x *= -1;
+            rb2d.velocity = newVeloc;
 
             if(Health < 0)
             {
