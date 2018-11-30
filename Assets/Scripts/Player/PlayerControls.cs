@@ -8,7 +8,7 @@ public class PlayerControls : MonoBehaviour
     public float speedH = 10f;
     public float JumpForce = 10f;
     private Rigidbody2D rb2d;
-    private bool isJumping;
+    public bool isJumping;
     public int Health = 3;
 
     // Use this for initialization
@@ -34,7 +34,7 @@ public class PlayerControls : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             isJumping = true;
-            rb2d.AddForce(new Vector2(rb2d.velocity.x, JumpForce));
+            rb2d.AddForce(new Vector2(rb2d.velocity.x, -JumpForce));
         }
     }
 
@@ -45,7 +45,7 @@ public class PlayerControls : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
-            rb2d.velocity = Vector2.zero;
+            //rb2d.velocity = Vector2.zero;
         }
 
         //Manipulates Health if Player hits enemy and calls game over
