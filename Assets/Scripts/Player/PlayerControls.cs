@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -124,6 +125,11 @@ public class PlayerControls : MonoBehaviour
             {
                 //add in game over scene
             }
+        }
+
+        if(other.gameObject.tag == "BurnMotherFucker")
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

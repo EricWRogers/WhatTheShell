@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+  - enabled: 0
+    path: Assets/Scenes/PTurtle_MoveTest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 31f7e8ad2fe088d45b86ad09c67dc366
+  - enabled: 1
+    path: Assets/Scenes/EricLevel1.unity
+    guid: 35bd74736342c46bfbc5cd2ecfdfd878
+  - enabled: 1
+    path: Assets/Scenes/EricLevel2.unity
+    guid: f8104ced99c00403d8fad7e55bc6d087
+  - enabled: 1
+    path: Assets/Scenes/EricLevel3.unity
+    guid: 52792c5f6c7fd4dc89267770ff67b430
   m_configObjects: {}
